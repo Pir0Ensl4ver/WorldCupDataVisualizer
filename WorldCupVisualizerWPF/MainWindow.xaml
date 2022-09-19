@@ -1,0 +1,100 @@
+﻿<Window x:Class="WorldCupVisualizerWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorldCupVisualizerWPF"
+        mc:Ignorable="d"
+        xmlns:properties="clr-namespace:WorldCupVisualizerWPF.Properties"
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.22*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lbScore" Content="vs" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="Century Gothic"/>
+        <ComboBox x:Name="cbFirstTeam" 
+                  Grid.Row="0" 
+                  Grid.Column="1" 
+                  Margin="5" Height="30" Style="{StaticResource ResourceKey=myComboBox}" DropDownClosed="cbFirstTeam_DropDownClosed">
+        </ComboBox>
+        <ComboBox x:Name="cbSecondTeam" 
+                  Grid.Row="0" 
+                  Grid.Column="3" 
+                  Margin="5" Height="30" Style="{StaticResource ResourceKey=myComboBox}" DropDownClosed="cbSecondTeam_DropDownClosed">
+        </ComboBox>
+        <Button x:Name="btnFirstTeam" Grid.Column="0" Grid.Row="0" Width="100" Height="30" Content="{x:Static properties:Resources.btnDetails}" Style="{StaticResource ResourceKey=RoundButton}">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="btnFirstTeam"
+                                Storyboard.TargetProperty="Opacity"
+                                From="1.0" To="0.0"
+                                Duration="0:0:0.5"
+                                Completed="Firstbtn_Animation_Completed" AutoReverse="True"></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+        <Button x:Name="btnSecondTeam" Grid.Column="4" Grid.Row="0" Width="100" Height="30" Content="{x:Static properties:Resources.btnDetails}" Style="{StaticResource ResourceKey=RoundButton}">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="btnSecondTeam"
+                                Storyboard.TargetProperty="Opacity"
+                                From="1.0" To="0.0"
+                                Duration="0:0:0.5"
+                                Completed="Secondbtn_Animation_Completed" AutoReverse="True"></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+        <Grid x:Name="fieldGrid" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Column="8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Column="9" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Grid.Background>
+                <ImageBrush ImageSource="/PictureResources/Background images/field.png"/>
+            </Grid.Background>
+        </Grid>
+    </Grid>
+    <Window.ContextMenu>
+        <ContextMenu x:Name="ctxMenu">
+            <MenuItem x:Name="ctxItemSettings" Header="{x:Static properties:Resources.settingsText}" Click="ctxItemSettings_Click" />
+        </ContextMenu>
+    </Window.ContextMenu>
+</Window>
